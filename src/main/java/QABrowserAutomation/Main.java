@@ -7,5 +7,8 @@ public class Main {
 
         WebPage webPage = new WebPage();
         webPage.openWebPage("https://playtech.ee/");
+        webPage.findLinkInPage("Internship").click();
+        webPage.quitWebPage();
+
     }
 }
