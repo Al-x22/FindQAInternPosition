@@ -1,14 +1,13 @@
 package QABrowserAutomation.Service;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class WebPage {
 
@@ -19,20 +18,22 @@ public class WebPage {
         driver.get(link);
         System.out.println(driver.getTitle());
     }
+
     public void quitWebPage() {
         driver.quit();
     }
-    public WebElement findLinkInPage (String element){
+
+    public WebElement findLinkInPage(String element) {
         return driver.findElement(By.xpath("//a[text()='" + element + "']"));
     }
-    public String findElementInPage (String sentenceToSearch){
 
-        try
-        {
+    public String findElementInPage(String sentenceToSearch) {
+
+        try {
             // By waiting until h3 is loaded, I can assure that the whole html has loaded, and then being able
             // to get the whole body properly
-           WebElement waitUntilHeaderLoads = new WebDriverWait(driver, Duration.ofSeconds(10))
-                  .until(driver -> driver.findElement(By.tagName("h3")));
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(driver -> driver.findElement(By.tagName("h3")));
 
             WebElement body = driver.findElement(By.tagName("body"));
             String bodyText = body.getText();
@@ -42,13 +43,34 @@ public class WebPage {
             for (String paragraph : paragraphs) {
                 if (paragraph.contains(sentenceToSearch)) {
                     return "The following text contains '" + sentenceToSearch + "':\n\n" + paragraph;
-                }
-                else return "'" + sentenceToSearch + "' is not shown on the page.";
+                } else return "'" + sentenceToSearch + "' is not shown on the page.";
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "There is an error with the element you want to search in the page. Please try again.";
+    }
+
+    //  Bonus Tasks
+    public void clickLinkInPageUsingCoordinates(int x, int y) {
+        new Actions(driver).moveByOffset(x + 5, y).click().build().perform();
+
+
+    }
+
+    public int[] getLinkCoordinates(String link) {
+        WebElement internshipTab = findLinkInPage(link);
+        int x = internshipTab.getLocation().getX();
+        int y = internshipTab.getLocation().getY();
+
+        return new int[]{x, y};
+    }
+
+    public void sleep(int i) {
+        try {
+            Thread.sleep(i);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
