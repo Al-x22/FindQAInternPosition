@@ -16,7 +16,6 @@ public class WebPage {
     public void openWebPage(String link) {
         driver.manage().window().maximize();
         driver.get(link);
-        System.out.println(driver.getTitle());
     }
 
     public void quitWebPage() {
@@ -54,8 +53,7 @@ public class WebPage {
     //  Bonus Tasks
     public void clickLinkInPageUsingCoordinates(int x, int y) {
         new Actions(driver).moveByOffset(x + 5, y).click().build().perform();
-
-
+        sleep(2500);
     }
 
     public int[] getLinkCoordinates(String link) {

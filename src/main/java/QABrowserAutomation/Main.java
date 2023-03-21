@@ -13,17 +13,13 @@ public class Main {
         webPage.openWebPage("https://playtech.ee/");
 
 //      Task 2 Without Coordinates
-//      webPage.findLinkInPage("Internship").click();
-
-//      Task 2 With Coordinates
-        int[] coordinates = webPage.getLinkCoordinates("Internship");
-        webPage.clickLinkInPageUsingCoordinates(coordinates[0], coordinates[1]);
-//      Give some time for page to reload fully
-        webPage.sleep(2500);
+        webPage.findLinkInPage("Internship").click();
 
 //      Task 3
         String elementToFind = webPage.findElementInPage("Development QA Engineer (Intern)");
         System.out.println(elementToFind);
+
+//      Bonus 2
         writeResultToTxt(elementToFind);
 
 //      Task 4
