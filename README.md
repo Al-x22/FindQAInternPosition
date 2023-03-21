@@ -13,3 +13,8 @@ methods were implemented. The first one obtains the coordinates again by using X
 Task 3 implements the 'findElementInPage' method, which when called providing a String, will search for that String by obtaining the content of the HTML body, dividing it into paragraphs, and then comparing the String to it. If the String is in the text, the paragraph will be returned. Later the paragraph can be printed or put in a txt file (Bonus 2).
 
 Bonus 3 has 2 tests for both task implementations. The first implementation doesn't use coordinates, the second does.
+
+
+### Notes
+
+The project was built using Maven
