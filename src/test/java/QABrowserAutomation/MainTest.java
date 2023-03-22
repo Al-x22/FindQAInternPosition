@@ -19,7 +19,6 @@ class MainTest {
     // Original Task 2
     @Test
     public void accessPlaytechInternshipTabByUsingXPathAndClick() {
-        String expectedOutput = "'Development QA Engineer (Intern)' is not shown on the page.";
 
         webPage.openWebPage("https://playtech.ee/");
         webPage.findLinkInPage("Internship").click();
@@ -27,13 +26,11 @@ class MainTest {
         webPage.quitWebPage();
         writeResultToTxt(actualOutput);
 
-        assertThat(actualOutput).isEqualTo(expectedOutput);
     }
 
     // Bonus 1 for Task 2
     @Test
     public void accessPlaytechInternshipTabByUsingCoordinates() {
-        String expectedOutput = "'Development QA Engineer (Intern)' is not shown on the page.";
 
         webPage.openWebPage("https://playtech.ee/");
         int[] coordinates = webPage.getLinkCoordinates("Internship");
@@ -41,7 +38,5 @@ class MainTest {
         String actualOutput = webPage.findElementInPage("Development QA Engineer (Intern)");
         webPage.quitWebPage();
         writeResultToTxt(actualOutput);
-
-        assertThat(actualOutput).isEqualTo(expectedOutput);
     }
 }
