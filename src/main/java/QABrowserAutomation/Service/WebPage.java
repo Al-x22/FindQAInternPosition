@@ -21,6 +21,7 @@ public class WebPage {
     public void quitWebPage() {
         driver.quit();
     }
+    public String getTitle() {return driver.getTitle();}
 
     public WebElement findLinkInPage(String element) {
         return driver.findElement(By.xpath("//a[text()='" + element + "']"));
